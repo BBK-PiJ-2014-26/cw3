@@ -37,4 +37,14 @@ public class ReturnObjectImpl implements ReturnObject {
 		return result;
 	}
 
+	public Object getReturnValue() {
+		Object result;
+		if (this.hasError()) {
+			result = null;
+		} else {
+			result = this.returnObject;
+		}
+		return result;
+	}
+
 }
