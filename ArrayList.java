@@ -1,4 +1,4 @@
-public class ArrayList {
+public class ArrayList implements List{
 
 	private Object[] list;
 
@@ -86,6 +86,7 @@ public class ArrayList {
 			for(int i = 0; i < this.list.length; i++) {
 				if (this.list[i] == null) {
 					this.list[i] = item;
+					i = this.list.length;
 				}
 			}
 			result.setError(ErrorMessage.NO_ERROR);
