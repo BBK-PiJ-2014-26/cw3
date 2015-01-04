@@ -1,4 +1,4 @@
-public class ArrayList implements List {
+public class ArrayList {
 
 	private Object[] list;
 
@@ -27,15 +27,71 @@ public class ArrayList implements List {
 	}
 
 	public ReturnObject get(int index) {
-		ReturnObject result = new ReturnObject();
+		ReturnObjectImpl result = new ReturnObjectImpl();
 		if (index >= this.list.length || index < 0) {
-			result.error = ErrorMessage.INDEX_OUT_OF_BOUNDS;
-		} else (this.isEmpty()) {
-			result.error = ErrorMessage.EMPTY_STRUCTURE;
+			result.setError(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+		} else if (this.isEmpty()) {
+			result.setError(ErrorMessage.EMPTY_STRUCTURE);
 		} else {
-			result.returnObject = list[index];
-			result.error = ErrorMessage.NO_ERROR;
+			result.setReturnObject(list[index]);
+			result.setError(ErrorMessage.NO_ERROR);
 		}
 		return result;
 	}
+
+	public ReturnObject remove(int index) {
+		ReturnObjectImpl result = new ReturnObjectImpl();
+		if (index >= this.list.length || index < 0) {
+			result.setError(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+		} else if (this.isEmpty()) {
+			result.setError(ErrorMessage.EMPTY_STRUCTURE);
+		} else {
+			result.setReturnObject(list[index]);
+			result.setError(ErrorMessage.NO_ERROR);
+			for(int i = index; i < (this.list.length - 1); i++) {
+				this.list[i] = this.list[i+1];
+			}
+			list[this.list.length - 1] = null;
+		}
+		return result;
+	}
+
+	public ReturnObject add(int index, Object item) {
+		ReturnObjectImpl result = new ReturnObjectImpl();
+		if (index >= this.list.length || index < 0) {
+			result.setError(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+		} else if (item == null || (this.size() - 1) == this.list.length) {
+			result.setError(ErrorMessage.INVALID_ARGUMENT);
+		} else {
+			if (this.list[index] == null) {
+				this.list[index] = item;
+				result.setError(ErrorMessage.NO_ERROR);
+			} else {
+				result.setError(ErrorMessage.NO_ERROR);
+				for(int i = index; i < this.list.length; i++) {
+					Object temp = this.list[i];
+					this.list[i] = item;
+					item = temp;
+				}
+			}
+		}
+		return result;
+	}
+
+	public ReturnObject add(Object item) {
+		ReturnObjectImpl result = new ReturnObjectImpl();
+		if (item == null || (this.size() - 1) == this.list.length) {
+			result.setError(ErrorMessage.INVALID_ARGUMENT);
+		} else {
+			for(int i = 0; i < this.list.length; i++) {
+				if (this.list[i] == null) {
+					this.list[i] = item;
+				}
+			}
+			result.setError(ErrorMessage.NO_ERROR);
+		}
+		return result;
+	}
+
+
 }
