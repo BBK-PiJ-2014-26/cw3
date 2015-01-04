@@ -21,17 +21,18 @@ public class ReturnObjectImpl implements ReturnObject {
 	}
 
 	public ErrorMessage getError() {
-		ErrorMessage result;
-		if (!this.hasError) {
-			result = NO_ERROR;
+		ErrorMessage result = null;
+		if (!this.hasError()) {
+			result = ErrorMessage.NO_ERROR;
 		} else {
 			switch (this.error) {
-				case EMPTY_STRUCTURE:		result = EMPTY_STRUCTURE;
+				case EMPTY_STRUCTURE:		result = ErrorMessage.EMPTY_STRUCTURE;
 											break;
-				case INDEX_OUT_OF_BOUNDS:	result = INDEX_OUT_OF_BOUNDS;
+				case INDEX_OUT_OF_BOUNDS:	result = ErrorMessage.INDEX_OUT_OF_BOUNDS;
 											break;
-				case INVALID_ARGUMENT:		result = INVALID_ARGUMENT;
+				case INVALID_ARGUMENT:		result = ErrorMessage.INVALID_ARGUMENT;
 											break;
+				default:					break;
 			}
 		}
 		return result;
