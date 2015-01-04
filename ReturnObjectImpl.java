@@ -32,7 +32,6 @@ public class ReturnObjectImpl implements ReturnObject {
 											break;
 				case INVALID_ARGUMENT:		result = ErrorMessage.INVALID_ARGUMENT;
 											break;
-				default:					break;
 			}
 		}
 		return result;
@@ -46,6 +45,14 @@ public class ReturnObjectImpl implements ReturnObject {
 			result = this.returnObject;
 		}
 		return result;
+	}
+
+	public void setError(ErrorMessage error) {
+		this.error = error;
+	}
+
+	public void setReturnObject(Object returnObject) {
+		this.returnObject = returnObject;
 	}
 
 }
