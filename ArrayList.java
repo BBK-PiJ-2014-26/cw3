@@ -25,4 +25,17 @@ public class ArrayList implements List {
 		}
 		return result;
 	}
+
+	public ReturnObject get(int index) {
+		ReturnObject result = new ReturnObject();
+		if (index >= this.list.length || index < 0) {
+			result.error = ErrorMessage.INDEX_OUT_OF_BOUNDS;
+		} else (this.isEmpty()) {
+			result.error = ErrorMessage.EMPTY_STRUCTURE;
+		} else {
+			result.returnObject = list[index];
+			result.error = ErrorMessage.NO_ERROR;
+		}
+		return result;
+	}
 }
