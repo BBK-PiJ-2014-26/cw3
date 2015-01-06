@@ -1,5 +1,4 @@
-public class ArrayList implements List{
-
+public class ArrayList implements List {
 	private Object[] list;
 
 	public ArrayList(int length) {
@@ -27,7 +26,7 @@ public class ArrayList implements List{
 	}
 
 	public ReturnObject get(int index) {
-		ReturnObjectImpl result = new ReturnObjectImpl();
+		ReturnObject result = new ReturnObjectImpl();
 		if (index >= this.list.length || index < 0) {
 			result.setError(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		} else if (this.isEmpty()) {
@@ -40,7 +39,7 @@ public class ArrayList implements List{
 	}
 
 	public ReturnObject remove(int index) {
-		ReturnObjectImpl result = new ReturnObjectImpl();
+		ReturnObject result = new ReturnObjectImpl();
 		if (index >= this.list.length || index < 0) {
 			result.setError(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		} else if (this.isEmpty()) {
@@ -57,7 +56,7 @@ public class ArrayList implements List{
 	}
 
 	public ReturnObject add(int index, Object item) {
-		ReturnObjectImpl result = new ReturnObjectImpl();
+		ReturnObject result = new ReturnObjectImpl();
 		if (index >= this.list.length || index < 0) {
 			result.setError(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		} else if (item == null || (this.size() - 1) == this.list.length) {
@@ -79,7 +78,7 @@ public class ArrayList implements List{
 	}
 
 	public ReturnObject add(Object item) {
-		ReturnObjectImpl result = new ReturnObjectImpl();
+		ReturnObject result = new ReturnObjectImpl();
 		if (item == null || (this.size() - 1) == this.list.length) {
 			result.setError(ErrorMessage.INVALID_ARGUMENT);
 		} else {
