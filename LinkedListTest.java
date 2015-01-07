@@ -9,10 +9,17 @@ public class LinkedListTest {
 		x = myList.add(0, "Boo");
 		System.out.println(x.getError());
 		x = myList.add("Gripes");
+		System.out.println(x.getError());
+
+		//Tests get()
 		x = myList.get(2);
 		System.out.println(x.getReturnValue());
 
 		// Tests size
+		System.out.println(myList.size());
+
+		// Tests remove()
+		x = myList.remove(1);
 		System.out.println(myList.size());
 	}
 }

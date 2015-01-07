@@ -120,10 +120,9 @@ public class LinkedList implements List {
 			result.setError(ErrorMessage.INVALID_ARGUMENT);
 		} else if (this.next == null) {
 			result.setError(ErrorMessage.NO_ERROR);
-			int x = this.index;
-			this.next = new LinkedList(item, x);
+			this.next = new LinkedList(item, this.index);
 		} else {
-			this.next.add(item);
+			result = this.next.add(item);
 		}
 		return result;
 	}
