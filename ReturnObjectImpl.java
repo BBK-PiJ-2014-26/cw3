@@ -4,7 +4,7 @@ public class ReturnObjectImpl implements ReturnObject {
 	private Object returnObject;
 
 	public boolean hasError() {
-		boolean result;
+		boolean result = true;
 		switch (this.error) {
 			case NO_ERROR:				result = false;
 										break;
@@ -14,17 +14,13 @@ public class ReturnObjectImpl implements ReturnObject {
 										break;
 			case INVALID_ARGUMENT:		result = true;
 										break;
-			default:					result = false;
-										break;
 		}
 		return result;
 	}
 
 	public ErrorMessage getError() {
 		ErrorMessage result = null;
-		if (!this.hasError()) {
-			result = ErrorMessage.NO_ERROR;
-		} else {
+		if (this.hasError()) {
 			switch (this.error) {
 				case EMPTY_STRUCTURE:		result = ErrorMessage.EMPTY_STRUCTURE;
 											break;
@@ -33,6 +29,8 @@ public class ReturnObjectImpl implements ReturnObject {
 				case INVALID_ARGUMENT:		result = ErrorMessage.INVALID_ARGUMENT;
 											break;
 			}
+		} else {
+			result = ErrorMessage.NO_ERROR;
 		}
 		return result;
 	}

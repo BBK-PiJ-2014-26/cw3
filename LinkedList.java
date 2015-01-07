@@ -27,12 +27,12 @@ public class LinkedList implements List {
 
 	public int size() {
 		int result = 0;
-		if (this.next == null && this.element == null && this.index == -1) {
+		if (this.next == null && this.element == null) {
 			result = 0;
 		} else if (this.next == null) {
 			result = this.index + 1;
 		} else {
-			this.next.size();
+			result = this.next.size();
 		}
 		return result;
 	}
@@ -96,9 +96,9 @@ public class LinkedList implements List {
 		if (item == null) {
 			result.setError(ErrorMessage.INVALID_ARGUMENT);
 		} else if (index < 0) {
-			result.setError(ErrorMessage.INVALID_ARGUMENT);
+			result.setError(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		} else if (index >= this.size()) {
-			result.setError(ErrorMessage.INVALID_ARGUMENT);
+			result.setError(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		} else {
 			if (this.next.index == index) {
 				LinkedList temp = new LinkedList();
@@ -119,8 +119,9 @@ public class LinkedList implements List {
 		if (item == null) {
 			result.setError(ErrorMessage.INVALID_ARGUMENT);
 		} else if (this.next == null) {
-			this.next = new LinkedList(item, this.index);
 			result.setError(ErrorMessage.NO_ERROR);
+			int x = this.index;
+			this.next = new LinkedList(item, x);
 		} else {
 			this.next.add(item);
 		}
