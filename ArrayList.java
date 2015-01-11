@@ -69,7 +69,7 @@ public class ArrayList implements List {
 				result.setError(ErrorMessage.NO_ERROR);
 			} else {
 				result.setError(ErrorMessage.NO_ERROR);
-				for(int i = index; i < this.size(); i++) {
+				for(int i = index; i < this.list.length; i++) {
 					Object temp = this.list[i];
 					this.list[i] = item;
 					item = temp;
@@ -104,7 +104,7 @@ public class ArrayList implements List {
 	public boolean isFull() {
 		boolean result = false;
 		for(int i = 0; i < this.list.length; i++) {
-			if (this.list[i] == null) {
+			if (this.list[i] != null) {
 				result = true;
 			}
 		}
@@ -116,7 +116,10 @@ public class ArrayList implements List {
 	*/
 	public void expandArray() {
 		int currentSize = this.size();
-		Object[] temp = this.list;
+		Object[] temp = new Object[currentSize];
+		for(int i = 0; i < temp.length; i++) {
+			temp[i] = this.list[i];
+		}
 		this.list = new Object[currentSize * 2];
 		for(int i = 0; i < temp.length; i++) {
 			this.list[i] = temp[i];
