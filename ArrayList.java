@@ -1,8 +1,8 @@
 public class ArrayList implements List {
 	private Object[] list;
 
-	public ArrayList(int length) {
-		this.list = new Object[length];
+	public ArrayList() {
+		this.list = new Object[10];
 	}
 
 	public boolean isEmpty() {
@@ -27,7 +27,7 @@ public class ArrayList implements List {
 
 	public ReturnObject get(int index) {
 		ReturnObjectImpl result = new ReturnObjectImpl();
-		if (index >= this.list.length || index < 0) {
+		if (index >= this.size() || index < 0) {
 			result.setError(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		} else if (this.isEmpty()) {
 			result.setError(ErrorMessage.EMPTY_STRUCTURE);
@@ -40,17 +40,16 @@ public class ArrayList implements List {
 
 	public ReturnObject remove(int index) {
 		ReturnObjectImpl result = new ReturnObjectImpl();
-		if (index >= this.list.length || index < 0) {
+		if (index >= this.size() || index < 0) {
 			result.setError(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		} else if (this.isEmpty()) {
 			result.setError(ErrorMessage.EMPTY_STRUCTURE);
 		} else {
 			result.setReturnObject(list[index]);
 			result.setError(ErrorMessage.NO_ERROR);
-			for(int i = index; i < (this.list.length - 1); i++) {
+			for(int i = index; this.list[i] != null; i++) {
 				this.list[i] = this.list[i+1];
 			}
-			list[this.list.length - 1] = null;
 		}
 		return result;
 	}
@@ -93,5 +92,16 @@ public class ArrayList implements List {
 		return result;
 	}
 
-
+	/**
+	* @return true if the current array is full.
+	*/
+	public boolean isFull() {
+		boolean result = false;
+		for(int i = 0; i < this.list.length; i++) {
+			if (this.list[i] == null) {
+				result = true;
+			}
+		}
+		return result;
+	}
 }
