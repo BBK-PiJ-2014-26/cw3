@@ -59,9 +59,9 @@ public class ArrayList implements List {
 			this.expandArray();
 		}
 		ReturnObjectImpl result = new ReturnObjectImpl();
-		if (index >= this.list.length || index < 0) {
+		if (index >= this.size() || index < 0) {
 			result.setError(ErrorMessage.INDEX_OUT_OF_BOUNDS);
-		} else if (item == null || (this.size() - 1) == this.list.length) {
+		} else if (item == null) {
 			result.setError(ErrorMessage.INVALID_ARGUMENT);
 		} else {
 			if (this.list[index] == null) {
@@ -69,7 +69,7 @@ public class ArrayList implements List {
 				result.setError(ErrorMessage.NO_ERROR);
 			} else {
 				result.setError(ErrorMessage.NO_ERROR);
-				for(int i = index; i < this.list.length; i++) {
+				for(int i = index; i < this.size(); i++) {
 					Object temp = this.list[i];
 					this.list[i] = item;
 					item = temp;
@@ -80,8 +80,11 @@ public class ArrayList implements List {
 	}
 
 	public ReturnObject add(Object item) {
+		if (this.isFull()) {
+			this.expandArray();
+		}
 		ReturnObjectImpl result = new ReturnObjectImpl();
-		if (item == null || (this.size() - 1) == this.list.length) {
+		if (item == null) {
 			result.setError(ErrorMessage.INVALID_ARGUMENT);
 		} else {
 			for(int i = 0; i < this.list.length; i++) {
