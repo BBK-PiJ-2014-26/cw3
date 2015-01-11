@@ -37,8 +37,8 @@ public class LinkedList implements List {
 		return result;
 	}
 
-	public ReturnObject get(int index) {
-		ReturnObject result = new ReturnObjectImpl();
+	public ReturnObjectImpl get(int index) {
+		ReturnObjectImpl result = new ReturnObjectImpl();
 		if (this.isEmpty()) {
 			result.setError(ErrorMessage.EMPTY_STRUCTURE);
 		} else if (this.size() > (index + 1)) {
@@ -56,8 +56,8 @@ public class LinkedList implements List {
 		return result;
 	}
 
-	public ReturnObject remove(int index) {
-		ReturnObject result = new ReturnObjectImpl();
+	public ReturnObjectImpl remove(int index) {
+		ReturnObjectImpl result = new ReturnObjectImpl();
 		if (this.isEmpty()) {
 			result.setError(ErrorMessage.EMPTY_STRUCTURE);
 		} else if (this.size() <= index) {
@@ -91,8 +91,8 @@ public class LinkedList implements List {
 		}
 	}
 
-	public ReturnObject add(int index, Object item) {
-		ReturnObject result = new ReturnObjectImpl();
+	public ReturnObjectImpl add(int index, Object item) {
+		ReturnObjectImpl result = new ReturnObjectImpl();
 		if (item == null) {
 			result.setError(ErrorMessage.INVALID_ARGUMENT);
 		} else if (index < 0) {
@@ -114,8 +114,8 @@ public class LinkedList implements List {
 		return result;
 	}
 
-	public ReturnObject add(Object item) {
-		ReturnObject result = new ReturnObjectImpl();
+	public ReturnObjectImpl add(Object item) {
+		ReturnObjectImpl result = new ReturnObjectImpl();
 		if (item == null) {
 			result.setError(ErrorMessage.INVALID_ARGUMENT);
 		} else if (this.next == null) {

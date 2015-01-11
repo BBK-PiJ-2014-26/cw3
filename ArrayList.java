@@ -26,7 +26,7 @@ public class ArrayList implements List {
 	}
 
 	public ReturnObject get(int index) {
-		ReturnObject result = new ReturnObjectImpl();
+		ReturnObjectImpl result = new ReturnObjectImpl();
 		if (index >= this.list.length || index < 0) {
 			result.setError(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		} else if (this.isEmpty()) {
@@ -39,7 +39,7 @@ public class ArrayList implements List {
 	}
 
 	public ReturnObject remove(int index) {
-		ReturnObject result = new ReturnObjectImpl();
+		ReturnObjectImpl result = new ReturnObjectImpl();
 		if (index >= this.list.length || index < 0) {
 			result.setError(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		} else if (this.isEmpty()) {
@@ -56,7 +56,7 @@ public class ArrayList implements List {
 	}
 
 	public ReturnObject add(int index, Object item) {
-		ReturnObject result = new ReturnObjectImpl();
+		ReturnObjectImpl result = new ReturnObjectImpl();
 		if (index >= this.list.length || index < 0) {
 			result.setError(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		} else if (item == null || (this.size() - 1) == this.list.length) {
@@ -78,7 +78,7 @@ public class ArrayList implements List {
 	}
 
 	public ReturnObject add(Object item) {
-		ReturnObject result = new ReturnObjectImpl();
+		ReturnObjectImpl result = new ReturnObjectImpl();
 		if (item == null || (this.size() - 1) == this.list.length) {
 			result.setError(ErrorMessage.INVALID_ARGUMENT);
 		} else {
