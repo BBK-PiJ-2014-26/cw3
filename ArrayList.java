@@ -55,6 +55,9 @@ public class ArrayList implements List {
 	}
 
 	public ReturnObject add(int index, Object item) {
+		if (this.isFull()) {
+			this.expandArray();
+		}
 		ReturnObjectImpl result = new ReturnObjectImpl();
 		if (index >= this.list.length || index < 0) {
 			result.setError(ErrorMessage.INDEX_OUT_OF_BOUNDS);
@@ -104,4 +107,17 @@ public class ArrayList implements List {
 		}
 		return result;
 	}
+
+	/**
+	* Creates a new array which clones the current contents and doubles this size.
+	*/
+	public void expandArray() {
+		int currentSize = this.size();
+		Object[] temp = this.list;
+		this.list = new Object[currentSize * 2];
+		for(int i = 0; i < temp.length; i++) {
+			this.list[i] = temp[i];
+		}
+	}
+
 }
