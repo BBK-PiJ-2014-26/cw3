@@ -35,8 +35,4 @@ public interface ReturnObject {
 	 *         error
 	 */
 	public Object getReturnValue();
-
-	public void setError(ErrorMessage error);
-
-	public void setReturnObject(Object returnObject);
 }
