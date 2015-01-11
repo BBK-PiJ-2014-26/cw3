@@ -112,7 +112,7 @@ public class ArrayList implements List {
 	}
 
 	/**
-	* Creates a new array which clones the current contents and doubles this size.
+	* Creates a new array which clones the current contents and doubles the size.
 	*/
 	public void expandArray() {
 		int currentSize = this.size();
