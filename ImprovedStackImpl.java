@@ -1,7 +1,11 @@
 public class ImprovedStackImpl implements ImprovedStack {
+	protected List internalList;
 
 	public boolean isEmpty() {
 		boolean result = false;
+		if (internalList.isEmpty()) {
+			result = true;
+		}
 		return result;
 	}
 
