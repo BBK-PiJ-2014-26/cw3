@@ -2,6 +2,9 @@ public class StackImpl extends AbstractStack {
 
 	public StackImpl(List list) {
 		super(list);
+		if (internalList == null) {
+			internalList = new ArrayList();
+		}
 	}
 
 	public boolean isEmpty() {
