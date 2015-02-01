@@ -40,15 +40,14 @@ public class LinkedList implements List {
 	public ReturnObjectImpl get(int index) {
 		ReturnObjectImpl result = new ReturnObjectImpl();
 		if (this.isEmpty()) {
-			result.setError(ErrorMessage.EMPTY_STRUCTURE);
+			result.set(ErrorMessage.EMPTY_STRUCTURE);
 		} else if (this.size() > (index + 1)) {
-			result.setError(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+			result.set(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		} else if (index < 0) {
-			result.setError(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+			result.set(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		} else {
 			if (this.index == index) {
-				result.setReturnObject(this.element);
-				result.setError(ErrorMessage.NO_ERROR);
+				result.set(this.element);
 			} else {
 				result = this.next.get(index);
 			}
@@ -59,15 +58,15 @@ public class LinkedList implements List {
 	public ReturnObjectImpl remove(int index) {
 		ReturnObjectImpl result = new ReturnObjectImpl();
 		if (this.isEmpty()) {
-			result.setError(ErrorMessage.EMPTY_STRUCTURE);
+			result.set(ErrorMessage.EMPTY_STRUCTURE);
 		} else if (this.size() <= index) {
-			result.setError(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+			result.set(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		} else if (index < 0) {
-			result.setError(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+			result.set(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		} else {
 			if (this.next.index == index) {
-				result.setReturnObject(this.element);
-				result.setError(ErrorMessage.NO_ERROR);
+				result.set(this.element);
+				result.set(ErrorMessage.NO_ERROR);
 				this.next = this.next.next;
 				this.next.decreaseIndex();
 			} else {
@@ -94,11 +93,11 @@ public class LinkedList implements List {
 	public ReturnObjectImpl add(int index, Object item) {
 		ReturnObjectImpl result = new ReturnObjectImpl();
 		if (item == null) {
-			result.setError(ErrorMessage.INVALID_ARGUMENT);
+			result.set(ErrorMessage.INVALID_ARGUMENT);
 		} else if (index < 0) {
-			result.setError(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+			result.set(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		} else if (index >= this.size()) {
-			result.setError(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+			result.set(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		} else {
 			if (this.next.index == index) {
 				LinkedList temp = new LinkedList();
@@ -106,7 +105,6 @@ public class LinkedList implements List {
 				temp.next.increaseIndex();
 				this.next = new LinkedList(item, this.index);
 				this.next.next = temp.next;
-				result.setError(ErrorMessage.NO_ERROR);
 			} else {
 				result = this.next.add(index, item);
 			}
@@ -117,9 +115,8 @@ public class LinkedList implements List {
 	public ReturnObjectImpl add(Object item) {
 		ReturnObjectImpl result = new ReturnObjectImpl();
 		if (item == null) {
-			result.setError(ErrorMessage.INVALID_ARGUMENT);
+			result.set(ErrorMessage.INVALID_ARGUMENT);
 		} else if (this.next == null) {
-			result.setError(ErrorMessage.NO_ERROR);
 			this.next = new LinkedList(item, this.index);
 		} else {
 			result = this.next.add(item);
