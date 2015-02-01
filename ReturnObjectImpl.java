@@ -1,9 +1,10 @@
+package src;
+
 /**
  * An implementation of the ReturnObject Interface.
  * A ReturnObjectImpl wraps an object from a list or an appropriate error message if the enacted method fails.
  * @author Gareth Moore
  */
-
 public class ReturnObjectImpl implements ReturnObject {
 	/**
 	 * Contains either the object returned by a method or if that fails, an approriate error message.
