@@ -11,10 +11,12 @@ public class FunctionalArrayList extends ArrayList implements FunctionalList {
 	public FunctionalList rest() {
 		FunctionalList result = new FunctionalArrayList();
 		int size = this.size();
-		for (int i = 1; i < size; i++) {
-			ReturnObject temp = new ReturnObjectImpl();
-			temp = this.get(i);
-			temp = result.add(temp.getReturnValue());
+		if (!isEmpty()) {
+			for (int i = 1; i < size; i++) {
+				ReturnObject temp = new ReturnObjectImpl();
+				temp = this.get(i);
+				temp = result.add(temp.getReturnValue());
+			}
 		}
 		return result;
 	}
