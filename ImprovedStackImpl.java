@@ -10,14 +10,19 @@ public class ImprovedStackImpl implements ImprovedStack {
 	}
 
 	public int size() {
-		int result = 0;
+		int result = internalList.size();
 		return result;
 	}
 
-	public void push(Object item) {}
+	public void push(Object item) {
+		ReturnObject addedItem = new ReturnObjectImpl();
+		addedItem = internalList.add(item);
+	}
 
 	public ReturnObject top() {
 		ReturnObject result = new ReturnObjectImpl();
+		int listSize = size();
+		result = internalList.get(listSize - 1);
 		return result;
 	}
 
