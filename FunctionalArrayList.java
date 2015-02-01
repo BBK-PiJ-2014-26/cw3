@@ -1,5 +1,6 @@
 public class FunctionalArrayList extends ArrayList implements FunctionalList {
-	private Object[] list;
+
+	// Needs super constructor?
 
 	public ReturnObject head() {
 		ReturnObject result = new ReturnObjectImpl();
