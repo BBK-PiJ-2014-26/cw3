@@ -31,6 +31,8 @@ public class AbstractStackImpl extends AbstractStack {
 
 	public ReturnObject pop() {
 		ReturnObject result = new ReturnObjectImpl();
+		int listSize = size();
+		result = internalList.remove(listSize - 1);
 		return result;
 	}
 }
