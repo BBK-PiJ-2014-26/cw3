@@ -1,6 +1,12 @@
 public class ImprovedStackImpl implements ImprovedStack {
 	protected List internalList;
 
+	public ImprovedStackImpl(List list) {
+		if (list != null) {
+			this.internalList = list;
+		}
+	}
+
 	public boolean isEmpty() {
 		boolean result = false;
 		if (internalList.isEmpty()) {
@@ -34,7 +40,19 @@ public class ImprovedStackImpl implements ImprovedStack {
 	}
 
 	public ImprovedStack reverse() {
-		ImprovedStack result = new ImprovedStackImpl();
+		List reversedList;
+		if (internalList instanceof ArrayList) {
+			reversedList = new ArrayList();
+		} else {
+			reversedList = new LinkedList();
+		}
+		int internalListSize = size();
+		for (int count = internalListSize - 1; count > -1; count--) {
+			ReturnObject temp = new ReturnObjectImpl();
+			temp = internalList.get(count);
+			temp = reversedList.add(temp);
+		}
+		ImprovedStack result = new ImprovedStackImpl(reversedList);
 		return result;
 	}
 
