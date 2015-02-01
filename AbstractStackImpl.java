@@ -17,7 +17,10 @@ public class AbstractStackImpl extends AbstractStack {
 		return result;
 	}
 
-	public void push(Object item) {}
+	public void push(Object item) {
+		ReturnObject addedItem = new ReturnObjectImpl();
+		addedItem = internalList.add(item);
+	}
 
 	public ReturnObject top() {
 		ReturnObject result = new ReturnObjectImpl();
