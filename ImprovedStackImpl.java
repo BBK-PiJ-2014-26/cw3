@@ -2,7 +2,9 @@ public class ImprovedStackImpl implements ImprovedStack {
 	protected List internalList;
 
 	public ImprovedStackImpl(List list) {
-		if (list != null) {
+		if (list == null) {
+			this.internalList = new ArrayList();
+		} else {
 			this.internalList = list;
 		}
 	}
