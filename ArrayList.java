@@ -27,26 +27,24 @@ public class ArrayList implements List {
 
 	public ReturnObject get(int index) {
 		ReturnObjectImpl result = new ReturnObjectImpl();
-		if (index >= this.size() || index < 0) {
-			result.setError(ErrorMessage.INDEX_OUT_OF_BOUNDS);
-		} else if (this.isEmpty()) {
-			result.setError(ErrorMessage.EMPTY_STRUCTURE);
+		if (index >= size() || index < 0) {
+			result.set(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+		} else if (isEmpty()) {
+			result.set(ErrorMessage.EMPTY_STRUCTURE);
 		} else {
-			result.setReturnObject(list[index]);
-			result.setError(ErrorMessage.NO_ERROR);
+			result.set(list[index]);
 		}
 		return result;
 	}
 
 	public ReturnObject remove(int index) {
 		ReturnObjectImpl result = new ReturnObjectImpl();
-		if (index >= this.size() || index < 0) {
-			result.setError(ErrorMessage.INDEX_OUT_OF_BOUNDS);
-		} else if (this.isEmpty()) {
-			result.setError(ErrorMessage.EMPTY_STRUCTURE);
+		if (index >= size() || index < 0) {
+			result.set(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+		} else if (isEmpty()) {
+			result.set(ErrorMessage.EMPTY_STRUCTURE);
 		} else {
-			result.setReturnObject(list[index]);
-			result.setError(ErrorMessage.NO_ERROR);
+			result.set(list[index]);
 			for(int i = index; this.list[i] != null; i++) {
 				this.list[i] = this.list[i+1];
 			}
@@ -60,15 +58,13 @@ public class ArrayList implements List {
 		}
 		ReturnObjectImpl result = new ReturnObjectImpl();
 		if (index >= this.size() || index < 0) {
-			result.setError(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+			result.set(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		} else if (item == null) {
-			result.setError(ErrorMessage.INVALID_ARGUMENT);
+			result.set(ErrorMessage.INVALID_ARGUMENT);
 		} else {
 			if (this.list[index] == null) {
 				this.list[index] = item;
-				result.setError(ErrorMessage.NO_ERROR);
 			} else {
-				result.setError(ErrorMessage.NO_ERROR);
 				for(int i = index; i < this.list.length; i++) {
 					Object temp = this.list[i];
 					this.list[i] = item;
@@ -85,7 +81,7 @@ public class ArrayList implements List {
 		}
 		ReturnObjectImpl result = new ReturnObjectImpl();
 		if (item == null) {
-			result.setError(ErrorMessage.INVALID_ARGUMENT);
+			result.set(ErrorMessage.INVALID_ARGUMENT);
 		} else {
 			for(int i = 0; i < this.list.length; i++) {
 				if (this.list[i] == null) {
@@ -93,7 +89,6 @@ public class ArrayList implements List {
 					i = this.list.length;
 				}
 			}
-			result.setError(ErrorMessage.NO_ERROR);
 		}
 		return result;
 	}
