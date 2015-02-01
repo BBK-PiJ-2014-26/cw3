@@ -24,6 +24,8 @@ public class AbstractStackImpl extends AbstractStack {
 
 	public ReturnObject top() {
 		ReturnObject result = new ReturnObjectImpl();
+		int listSize = size();
+		result = internalList.get(listSize - 1);
 		return result;
 	}
 
