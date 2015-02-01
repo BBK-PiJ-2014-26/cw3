@@ -13,7 +13,7 @@ public class AbstractStackImpl extends AbstractStack {
 	}
 
 	public int size() {
-		int result = 0;
+		int result = internalList.size();
 		return result;
 	}
 
