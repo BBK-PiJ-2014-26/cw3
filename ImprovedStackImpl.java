@@ -58,6 +58,18 @@ public class ImprovedStackImpl implements ImprovedStack {
 		return result;
 	}
 
-	public void remove(Object object) {}
+	public void remove(Object object) {
+		if (!isEmpty()) {
+			int stackSize = size();
+			for (int count = 0; count < stackSize; count++) {
+				ReturnObject temp = new ReturnObjectImpl();
+				temp = internalList.get(count);
+				Object tempObject = temp.getReturnValue();
+				if (tempObject.equals(object)) {
+					internalList.remove(count);
+				}
+			}
+		}
+	}
 
 }
