@@ -1,6 +1,6 @@
-public class AbstractStackImpl extends AbstractStack {
+public class StackImpl extends AbstractStack {
 
-	public AbstractStackImpl(List list) {
+	public StackImpl(List list) {
 		super(list);
 	}
 
