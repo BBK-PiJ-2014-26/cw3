@@ -1,5 +1,14 @@
+/**
+ * An implementation of the ReturnObject Interface.
+ * A ReturnObjectImpl wraps an object from a list or an appropriate error message if the enacted method fails.
+ * @author Gareth Moore
+ */
+
 public class ReturnObjectImpl implements ReturnObject {
-	private Object returnObject;
+	/**
+	 * Contains either the object returned by a method or if that fails, an approriate error message.
+	 */
+	protected Object returnObject;
 
 	public boolean hasError() {
 		boolean result = false;
@@ -39,6 +48,10 @@ public class ReturnObjectImpl implements ReturnObject {
 		return result;
 	}
 
+	/**
+	 * Sets the instance variable returnObject.
+	 * @param returnObject is the object or error message to be wrapped inside ReturnObjectImpl.
+	 */
 	public void set(Object returnObject) {
 		this.returnObject = returnObject;
 	}
