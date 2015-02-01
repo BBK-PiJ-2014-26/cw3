@@ -38,4 +38,8 @@ public class ReturnObjectImpl implements ReturnObject {
 		}
 		return result;
 	}
+
+	public void set(Object returnObject) {
+		this.returnObject = returnObject;
+	}
 }
