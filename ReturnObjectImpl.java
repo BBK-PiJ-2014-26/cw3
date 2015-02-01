@@ -1,33 +1,27 @@
 public class ReturnObjectImpl implements ReturnObject {
-
-	private ErrorMessage error;
 	private Object returnObject;
 
 	public boolean hasError() {
-		boolean result = true;
-		switch (this.error) {
-			case NO_ERROR:				result = false;
-										break;
-			case EMPTY_STRUCTURE:		result = true;
-										break;
-			case INDEX_OUT_OF_BOUNDS:	result = true;
-										break;
-			case INVALID_ARGUMENT:		result = true;
-										break;
+		boolean result = false;
+		if (returnObject.equals(ErrorMessage.EMPTY_STRUCTURE)) {
+			result = true;
+		} else if (returnObject.equals(ErrorMessage.INDEX_OUT_OF_BOUNDS)) {
+			result = true;
+		} else if (returnObject.equals(ErrorMessage.INVALID_ARGUMENT)) {
+			result = true;
 		}
 		return result;
 	}
 
 	public ErrorMessage getError() {
 		ErrorMessage result = null;
-		if (this.hasError()) {
-			switch (this.error) {
-				case EMPTY_STRUCTURE:		result = ErrorMessage.EMPTY_STRUCTURE;
-											break;
-				case INDEX_OUT_OF_BOUNDS:	result = ErrorMessage.INDEX_OUT_OF_BOUNDS;
-											break;
-				case INVALID_ARGUMENT:		result = ErrorMessage.INVALID_ARGUMENT;
-											break;
+		if (hasError()) {
+			if (returnObject.equals(ErrorMessage.EMPTY_STRUCTURE)) {
+				result = ErrorMessage.EMPTY_STRUCTURE;
+			} else if (returnObject.equals(ErrorMessage.INDEX_OUT_OF_BOUNDS)) {
+				result = ErrorMessage.INDEX_OUT_OF_BOUNDS;
+			} else if (returnObject.equals(ErrorMessage.INVALID_ARGUMENT)) {
+				result = ErrorMessage.INVALID_ARGUMENT;
 			}
 		} else {
 			result = ErrorMessage.NO_ERROR;
@@ -37,20 +31,11 @@ public class ReturnObjectImpl implements ReturnObject {
 
 	public Object getReturnValue() {
 		Object result;
-		if (this.hasError()) {
+		if (hasError()) {
 			result = null;
 		} else {
-			result = this.returnObject;
+			result = returnObject;
 		}
 		return result;
 	}
-
-	public void setError(ErrorMessage error) {
-		this.error = error;
-	}
-
-	public void setReturnObject(Object returnObject) {
-		this.returnObject = returnObject;
-	}
-
 }
