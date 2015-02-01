@@ -19,10 +19,12 @@ public class FunctionalLinkedList extends LinkedList implements FunctionalList {
 	public FunctionalList rest() {
 		FunctionalList result = new FunctionalLinkedList();
 		int listSize = size(); //Do I need a this here?
-		for(int i = 1; i < listSize; i++) {
-			ReturnObjectImpl temp = new ReturnObjectImpl();
-			temp = get(i);
-			result.add(temp.getReturnValue());
+		if (!isEmpty()) {
+			for(int i = 1; i < listSize; i++) {
+				ReturnObjectImpl temp = new ReturnObjectImpl();
+				temp = get(i);
+				result.add(temp.getReturnValue());
+			}
 		}
 		return result;
 	}
