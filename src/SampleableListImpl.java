@@ -1,6 +1,9 @@
+/**
+ * Implementation of the interface @see SampleableList.
+ * Extends the class FunctionalArrayList.
+ * @author Gareth Moore
+ */
 public class SampleableListImpl extends FunctionalArrayList implements SampleableList {
-
-	// Needs super constructor?
 
 	public SampleableList sample() {
 		SampleableList result = new SampleableListImpl();
