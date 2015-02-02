@@ -1,6 +1,8 @@
+/**
+ * Implementation of FunctionalList that extends ArrayList.
+ * @author Gareth Moore
+ */
 public class FunctionalArrayList extends ArrayList implements FunctionalList {
-
-	// Needs super constructor?
 
 	public ReturnObject head() {
 		ReturnObject result = new ReturnObjectImpl();
