@@ -108,10 +108,10 @@ public class ArrayList implements List {
 	 * @return true if the current array is full.
 	 */
 	public boolean isFull() {
-		boolean result = false;
-		for(int i = 0; i < size(); i++) {
-			if (list[i] != null) {
-				result = true;
+		boolean result = true;
+		for(int i = 0; i < list.length; i++) {
+			if (list[i] == null) {
+				result = false;
 			}
 		}
 		return result;
