@@ -104,12 +104,13 @@ public class ArrayList implements List {
 	}
 
 	/**
-	* @return true if the current array is full.
-	*/
+	 * Tests whether the array holding the list is full.
+	 * @return true if the current array is full.
+	 */
 	public boolean isFull() {
 		boolean result = false;
-		for(int i = 0; i < this.list.length; i++) {
-			if (this.list[i] != null) {
+		for(int i = 0; i < size(); i++) {
+			if (list[i] != null) {
 				result = true;
 			}
 		}
