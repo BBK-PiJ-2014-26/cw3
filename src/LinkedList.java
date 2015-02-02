@@ -87,9 +87,10 @@ public class LinkedList implements List {
 			result.set(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		} else {
 			if (this.next.index == index) {
-				result.set(this.element);
-				result.set(ErrorMessage.NO_ERROR);
-				this.next = this.next.next;
+				result.set(this.next.element);
+				if (this.next.next != null) {
+					this.next = this.next.next;
+				}
 				this.next.decreaseIndex();
 			} else {
 				result = this.next.remove(index);
