@@ -1,5 +1,13 @@
+/**
+ * Extends abstract class @see AbstractStack which itself implements the interface @see Stack.
+ * @author Gareth moore
+ */
 public class StackImpl extends AbstractStack {
 
+	/**
+	 * Constructor which enacts the super constructor within @see AbstractStack.
+	 * Check that list is not a null list. If it is null, it instantiates a new @see ArrayList.
+	 */
 	public StackImpl(List list) {
 		super(list);
 		if (internalList == null) {
