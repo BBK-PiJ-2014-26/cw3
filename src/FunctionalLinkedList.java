@@ -1,11 +1,19 @@
+/**
+ * Implementation of FunctionalList that extends LinkedList.
+ * @author Gareth Moore
+ */
 public class FunctionalLinkedList extends LinkedList implements FunctionalList {
 
-	// Javadoc comments? super constructor necessary?
+	/**
+	 * Constructs a FunctionalList by calling the constructor from LinkedList.
+	 */
 	public FunctionalLinkedList() {
 		super();
 	}
 
-	// Javadoc comments?
+	/**
+	 * Constructs a FunctionalList by calling the constructor from LinkedList.
+	 */
 	public FunctionalLinkedList(Object element, int index) {
 		super(element, index);
 	}
@@ -18,7 +26,7 @@ public class FunctionalLinkedList extends LinkedList implements FunctionalList {
 
 	public FunctionalList rest() {
 		FunctionalList result = new FunctionalLinkedList();
-		int listSize = size(); //Do I need a this here?
+		int listSize = size();
 		if (!isEmpty()) {
 			for(int i = 1; i < listSize; i++) {
 				ReturnObjectImpl temp = new ReturnObjectImpl();
