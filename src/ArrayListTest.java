@@ -172,4 +172,28 @@ public class ArrayListTest {
 		expected = "Crisps";
 		assertEquals(expected, actual);
 	}
+
+		/**
+		 * Tests get(). Should return each appropriate error message and then a correct item.
+		 */
+		@Test
+		public void shouldGetItemOrReturnError() {
+			List test = new LinkedList();
+			ReturnObject testObject = new ReturnObjectImpl();
+			testObject = test.get(0);
+			ErrorMessage actual = testObject.getError();
+			ErrorMessage expected = ErrorMessage.EMPTY_STRUCTURE;
+			assertEquals(expected, actual);
+			testObject = test.add("Hello");
+			testObject = test.add("Boo");
+			testObject = test.remove(4);
+			actual = testObject.getError();
+			expected = ErrorMessage.INDEX_OUT_OF_BOUNDS;
+			assertEquals(expected, actual);
+			testObject = test.get(1);
+			Object actualObj = testObject.getReturnValue();
+			Object expectedObj = "Boo";
+			assertEquals(expectedObj, actualObj);
+		}
+
 }
