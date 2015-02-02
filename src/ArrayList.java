@@ -55,8 +55,12 @@ public class ArrayList implements List {
 			result.set(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		} else {
 			result.set(list[index]);
-			for(int i = index; this.list[i] != null; i++) {
-				this.list[i] = this.list[i+1];
+			for(int i = index; i < this.list.length; i++) {
+				if (i == (this.list.length - 1)) {
+					this.list[i] = null;
+				} else {
+					this.list[i] = this.list[i+1];
+				}
 			}
 		}
 		return result;
@@ -118,8 +122,8 @@ public class ArrayList implements List {
 	}
 
 	/**
-	* Creates a new array which clones the current contents and doubles the size.
-	*/
+	 * Creates a new array which clones the current contents and doubles the size.
+	 */
 	public void expandArray() {
 		int currentSize = this.size();
 		Object[] temp = new Object[currentSize];
@@ -131,5 +135,4 @@ public class ArrayList implements List {
 			this.list[i] = temp[i];
 		}
 	}
-
 }
