@@ -77,21 +77,19 @@ public class LinkedList implements List {
 
 	public ReturnObjectImpl remove(int index) {
 		ReturnObjectImpl result = new ReturnObjectImpl();
-		if (this.isEmpty()) {
+		if (isEmpty()) {
 			result.set(ErrorMessage.EMPTY_STRUCTURE);
-		} else if (this.size() <= index) {
-			result.set(ErrorMessage.INDEX_OUT_OF_BOUNDS);
-		} else if (index < 0) {
+		} else if (index < 0 || index >= size()) {
 			result.set(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		} else {
-			if (this.next.index == index) {
-				result.set(this.next.element);
-				if (this.next.next != null) {
-					this.next = this.next.next;
+			if (next.index == index) {
+				result.set(next.element);
+				if (next.next != null) {
+					next = next.next;
 				}
-				this.next.decreaseIndex();
+				next.decreaseIndex();
 			} else {
-				result = this.next.remove(index);
+				result = next.remove(index);
 			}
 		}
 		return result;
