@@ -15,17 +15,21 @@ public class ReturnObjectImplTest {
 	public void shouldShowHasErrorWorks() {
 		ReturnObjectImpl test = new ReturnObjectImpl();
 		test.set(ErrorMessage.EMPTY_STRUCTURE);
+		// Asserts that the EMPTY_STRUCTURE error is present.
 		assertTrue(test.hasError());
 		test.set(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+		// Asserts that the INDEX_OUT_OF_BOUNDS error is present.
 		assertTrue(test.hasError());
 		test.set(ErrorMessage.INVALID_ARGUMENT);
+		// Asserts that the INVALID_ARGUMENT error is present.
 		assertTrue(test.hasError());
 		test.set(ErrorMessage.NO_ERROR);
+		// Asserts that hasError() does not reurn true when the error is NO_ERROR.
 		assertFalse(test.hasError());
 	}
 
 	/**
-	 * getError() should return each type of error correctly.
+	 * Test getError() should return each type of error correctly.
 	 */
 	@Test
 	public void shouldreturnEachErrorType() {

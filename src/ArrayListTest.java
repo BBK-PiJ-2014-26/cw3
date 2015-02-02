@@ -19,7 +19,7 @@ public class ArrayListTest {
 	}
 
 	/**
-	 * Tests size()
+	 * Tests size().
 	 */
 	@Test
 	public void shouldReturnCorrectListSize() {
@@ -43,6 +43,7 @@ public class ArrayListTest {
 		testObject = test.remove(0);
 		ErrorMessage actual = testObject.getError();
 		ErrorMessage expected = ErrorMessage.EMPTY_STRUCTURE;
+		// Should assert if true if EMPTY_STRUCTURE error is returned.
 		assertEquals(expected, actual);
 		testObject = test.add("Hello");
 		testObject = test.add("Boo");
@@ -51,10 +52,12 @@ public class ArrayListTest {
 		testObject = test.remove(4);
 		actual = testObject.getError();
 		expected = ErrorMessage.INDEX_OUT_OF_BOUNDS;
+		// Should assert if true if INDEX_OUT_OF_BOUNDS error is returned.
 		assertEquals(expected, actual);
 		testObject = test.remove(3);
 		Object actualObj = testObject.getReturnValue();
 		Object expectedObj = "Crisps";
+		// Checks that the correct returnValue is returned.
 		assertEquals(expectedObj, actualObj);
 	}
 
@@ -73,14 +76,17 @@ public class ArrayListTest {
 		testObject = test.remove(2);
 		Object actual = testObject.getReturnValue();
 		Object expected = "West Wing";
+		// Tests that the the string "West Wing" is added a the correct index.
 		assertEquals(expected, actual);
 		testObject = test.add(7, "Zardoz");
 		ErrorMessage actualError = testObject.getError();
 		ErrorMessage expectedError = ErrorMessage.INDEX_OUT_OF_BOUNDS;
+		// Tests that an invalid index returns an INDEX_OUT_OF_BOUNDS error.
 		assertEquals(expectedError, actualError);
 		testObject = test.add(1, null);
 		actualError = testObject.getError();
 		expectedError = ErrorMessage.INVALID_ARGUMENT;
+		// Tests that adding a null item returns an INVALID_ARGUMENT error.
 		assertEquals(expectedError, actualError);
 	}
 
@@ -98,6 +104,7 @@ public class ArrayListTest {
 		testObject = test.remove(2);
 		Object actual = testObject.getReturnValue();
 		Object expected = "Tree";
+		// Tests that an item was added at the expected index.
 		assertEquals(expected, actual);
 		int actualSize = test.size();
 		int expectedSize = 3;
@@ -105,6 +112,7 @@ public class ArrayListTest {
 		testObject = test.add(1, null);
 		ErrorMessage actualError = testObject.getError();
 		ErrorMessage expectedError = ErrorMessage.INVALID_ARGUMENT;
+		// Tests that adding a null item returns an INVALID_ARGUMENT error.
 		assertEquals(expectedError, actualError);
 	}
 
