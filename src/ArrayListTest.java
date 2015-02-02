@@ -151,4 +151,25 @@ public class ArrayListTest {
 		int expected = 11;
 		assertEquals(expected, actual);
 	}
+
+	/**
+	 * Test that remove() successfully removes the front and back of the list.
+	 */
+	@Test
+	public void shouldRemoveFrontAndBack() {
+		List test = new LinkedList();
+		ReturnObject testObject = new ReturnObjectImpl();
+		testObject = test.add("Hello");
+		testObject = test.add("Boo");
+		testObject = test.add("Tree");
+		testObject = test.add("Crisps");
+		testObject = test.remove(0);
+		Object actual = testObject.getReturnValue();
+		Object expected = "Hello";
+		assertEquals(expected, actual);
+		testObject = test.remove(2);
+		actual = testObject.getReturnValue();
+		expected = "Crisps";
+		assertEquals(expected, actual);
+	}
 }
