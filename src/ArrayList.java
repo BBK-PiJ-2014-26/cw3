@@ -37,10 +37,10 @@ public class ArrayList implements List {
 
 	public ReturnObject get(int index) {
 		ReturnObjectImpl result = new ReturnObjectImpl();
-		if (index >= size() || index < 0) {
-			result.set(ErrorMessage.INDEX_OUT_OF_BOUNDS);
-		} else if (isEmpty()) {
+		if (isEmpty()) {
 			result.set(ErrorMessage.EMPTY_STRUCTURE);
+		} else if (index >= size() || index < 0) {
+			result.set(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		} else {
 			result.set(list[index]);
 		}
