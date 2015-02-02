@@ -1,6 +1,16 @@
+/**
+ * Implements the interface list using Arrays.
+ * @author Gareth Moore
+ */
 public class ArrayList implements List {
+	/**
+	 * An array which holds the contents of the list. The array will expand as the list grows.
+	 */
 	private Object[] list;
 
+	/**
+	 * Constructor which builds an array that can initially hold 10 objects.
+	 */
 	public ArrayList() {
 		this.list = new Object[10];
 	}
