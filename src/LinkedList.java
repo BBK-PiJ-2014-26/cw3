@@ -63,9 +63,7 @@ public class LinkedList implements List {
 		ReturnObjectImpl result = new ReturnObjectImpl();
 		if (this.isEmpty()) {
 			result.set(ErrorMessage.EMPTY_STRUCTURE);
-		} else if (this.size() > (index + 1)) {
-			result.set(ErrorMessage.INDEX_OUT_OF_BOUNDS);
-		} else if (index < 0) {
+		} else if (index < 0 || index >= this.size()) {
 			result.set(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		} else {
 			if (this.index == index) {
